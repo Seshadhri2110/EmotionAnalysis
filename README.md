@@ -41,11 +41,11 @@ The project performs the following operations:
                     │      main.py        │
                     └──────────┬──────────┘
                                │
-              ┌────────────────┼─────────────────┐
-              │                │                 │
-              ▼                ▼                 ▼
-       Configuration       KaggleHub        Watson NLP
-       Configuration.py    Dataset          Emotion API
+              ┌────────────────┼─────────────────-------------------------
+              │                │                 │                        |
+              ▼                ▼                 ▼                        ▼
+       Configuration       KaggleHub        Watson NLP                EmotionDetection
+       Configuration.py    Dataset          Emotion API               emotion_detection.py
               │                │                 │
               ▼                ▼                 │
        Configuration.json   CSV Files            │
@@ -62,7 +62,7 @@ The project performs the following operations:
 ----
 ##3. File structure
 ```text
-EmotionDetection/
+Main
 │
 ├── README.md
 │
@@ -74,7 +74,12 @@ EmotionDetection/
 │   └── Configuration.json
 │
 └── templates/
-    └── index.html
+|    └── index.html
+|___ EmotionDetection
+      ├── __init__.py
+      ├──  emotion_detection.py
+        
+       
 ```
 ##4. Description of files
 
