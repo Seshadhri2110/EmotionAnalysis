@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emotion Detection</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f8fc;
+        }
+
+        /* Header */
+
+        .header {
+            background: linear-gradient(
+                135deg,
+                #0d47a1,
+                #1976d2
+            );
+
+            color: white;
+            text-align: center;
+            padding: 28px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        /* Main container */
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Text area */
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 4px rgba(25, 118, 210, 0.3);
+        }
+
+        /* Button */
+
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        /* Result */
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-left: 5px solid #1565c0;
+            border-radius: 5px;
+        }
+
+        .result h2 {
+            color: #0d47a1;
+            margin-top: 0;
+        }
+
+        /* Error */
+
+        .error {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffebee;
+            border-left: 5px solid #c62828;
+            border-radius: 5px;
+            color: #b71c1c;
+        }
+
+        .error h3 {
+            margin-top: 0;
+        }
+
+        /* Watson response */
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 15px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <h1>Emotion Detection</h1>
+
+        <p>Author: Seshadhri Srinivasan</p>
+
+    </div>
+
+
+    <!-- Main content -->
+
+    <div class="container">
+
+        <!-- Form -->
+
+        <form method="POST" action="/">
+
+            <label for="textToAnalyze">
+
+                <strong>
+                    Enter text for emotion detection:
+                </strong>
+
+            </label>
+
+            <br>
+            <br>
+
+            <textarea
+                id="textToAnalyze"
+                name="textToAnalyze"
+                placeholder="Enter your text here..."
+                required></textarea>
+
+            <div class="button-container">
+
+                <button type="submit">
+                    Run Emotion Detection
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- Result -->
+
+        {% if emotion_result %}
+
+        <div class="result">
+
+            <h2>
+                Result of Emotion Detection
+            </h2>
+
+            <pre>{{ emotion_result | tojson(indent=2) }}</pre>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Error -->
+
+        {% if error_message %}
+
+        <div class="error">
+
+            <h3>
+                Error
+            </h3>
+
+            <p>
+                {{ error_message }}
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
